@@ -1,0 +1,6 @@
+import pygame
+
+def play_buzzer():
+    pygame.mixer.init()
+    pygame.mixer.music.load("buzzer.mp3")  # or .wav
+    pygame.mixer.music.play()
