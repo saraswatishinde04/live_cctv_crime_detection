@@ -1,19 +1,28 @@
-import os
-import platform
-import winsound
+# utils/notify.py
 
-def play_buzzer():
-    system = platform.system()
-    if system == "Windows":
-        # Use built-in beep
-        winsound.Beep(1000, 500)  # Frequency: 1000Hz, Duration: 500ms
-    else:
-        # For Linux/macOS
-        os.system('echo -e "\a"')
+import os
+import cv2
+import time
+
+ALERT_DIR = "saved_alerts"
+
+
+def save_alert_frame(frame):
+    """Save detected crime frame to disk and return path"""
+    os.makedirs(ALERT_DIR, exist_ok=True)
+
+    timestamp = time.strftime("%Y%m%d_%H%M%S")
+    filename = f"alert_{timestamp}.jpg"
+    path = os.path.join(ALERT_DIR, filename)
+
+    cv2.imwrite(path, frame)
+    return path
+
 
 def send_notification(frame):
-    print("🚨 Crime Detected! Saving alert frame...")
-    play_buzzer()
+    """
+    Handles alert logic (currently saves frame).
+    Can be extended to email / buzzer / WhatsApp.
+    """
     saved_path = save_alert_frame(frame)
-    print(f"📸 Frame saved at: {saved_path}")
     return saved_path
