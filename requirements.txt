@@ -1,12 +1,3 @@
 streamlit
-opencv-python
-numpy
-Pillow
-torch
-torchvision
-playsound
-
-
-streamlit>=1.18
-opencv-python
+opencv-python-headless
 numpy
