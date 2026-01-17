@@ -35,7 +35,6 @@ if uploaded_video is not None:
         tfile.write(uploaded_video.read())
         video_path = tfile.name
 
-    st.video(video_path)
     st.info("⏳ Processing video... Please wait.")
 
     # OpenCV Video Capture
