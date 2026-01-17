@@ -8,8 +8,10 @@ import cv2
 # Dummy placeholder for testing (later replace with actual model)
 # To simulate crime detection for testing without a real model
 def predict_frame(frame):
-    # Simulate 1 in 50 frames as a "crime detected"
-    return random.randint(0, 49) == 0
+    # TEMP TEST: trigger every 50 frames
+    import random
+    return random.randint(1, 50) == 25
+
 
 # When you have a model later, replace with this:
 """
